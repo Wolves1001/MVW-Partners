@@ -1,0 +1,385 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1"><style>:root{color-scheme:light}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html><html data-theme="light" style="color-scheme:only light"><head><meta name="color-scheme" content="only light"><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>MVW Partners</title><style>@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap");
+
+/* MVW Partners components. Every value comes from tokens.css. */
+.mvw-root, .mvw-root * { box-sizing: border-box; }
+.mvw-root { font-family: var(--font-body); color: var(--ink-600); background: var(--surface-000); -webkit-font-smoothing: antialiased; }
+.mvw-container { max-width: var(--container-max); margin: 0 auto; padding: 0 var(--space-8); }
+.mvw-section { padding: var(--space-24) 0; }
+.mvw-section--white { background: var(--surface-000); }
+.mvw-section--alt { background: var(--surface-050); border-top: 1px solid var(--line-200); border-bottom: 1px solid var(--line-200); }
+
+/* Logo */
+.mvw-logo { display: inline-flex; align-items: center; text-decoration: none; }
+.mvw-logo svg { display: block; width: auto; }
+
+/* Button */
+.mvw-btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2); font-family: var(--font-display); font-size: 15px; line-height: 20px; font-weight: 700; padding: 14px var(--space-6); border-radius: var(--radius-md); border: 1px solid transparent; text-decoration: none; cursor: pointer; transition: background-color .15s ease, border-color .15s ease, color .15s ease; white-space: nowrap; }
+.mvw-btn:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+.mvw-btn-arrow { transition: transform .15s ease; }
+.mvw-btn:hover .mvw-btn-arrow { transform: translateX(3px); }
+.mvw-btn--primary { background: var(--brand-navy); color: var(--on-inverse); }
+.mvw-btn--primary:hover { background: var(--brand-ink-deep); }
+.mvw-btn--secondary { background: var(--surface-000); color: var(--heading); border-color: var(--control-border); }
+.mvw-btn--secondary:hover { border-color: var(--heading); }
+.mvw-btn--inverse { background: var(--on-inverse); color: var(--brand-navy); }
+.mvw-btn--inverse:hover { background: var(--line-200); }
+.mvw-btn--ghost-inverse { background: transparent; color: var(--on-inverse); border-color: var(--on-inverse-subtle); }
+.mvw-btn--ghost-inverse:hover { border-color: var(--on-inverse); }
+.mvw-btn--link { padding: 0; border: 0; background: none; color: var(--heading); }
+.mvw-btn--link:hover { color: var(--accent-text); }
+.mvw-btn--sm { padding: 10px 20px; font-size: 14px; }
+
+/* Eyebrow and tag */
+.mvw-eyebrow { display: inline-block; font-family: var(--font-body); font-size: 13px; line-height: 18px; font-weight: 600; letter-spacing: 1.2px; text-transform: uppercase; color: var(--accent-text); }
+.mvw-eyebrow--inverse { color: var(--on-inverse-accent); }
+.mvw-tag { display: inline-flex; align-items: center; font-size: 12px; line-height: 16px; font-weight: 600; padding: 4px var(--space-2); border-radius: var(--radius-sm); background: var(--surface-100); color: var(--ink-700); }
+.mvw-tag--inverse { background: transparent; color: var(--on-inverse-muted); border: 1px solid var(--line-inverse); }
+
+/* Section header */
+.mvw-sh { max-width: 720px; margin-bottom: var(--space-12); }
+.mvw-sh--center { margin-left: auto; margin-right: auto; text-align: center; }
+.mvw-sh h2 { font-family: var(--font-display); font-size: 36px; line-height: 44px; font-weight: 800; letter-spacing: -0.8px; color: var(--heading); margin: var(--space-3) 0 var(--space-4); }
+.mvw-sh p { font-size: 18px; line-height: 29px; color: var(--ink-600); margin: 0; }
+.mvw-sh--inverse h2 { color: var(--on-inverse); }
+.mvw-sh--inverse p { color: var(--on-inverse-muted); }
+
+/* Utility bar + header */
+.mvw-utility { background: var(--brand-ink-deep); color: var(--on-inverse-subtle); font-size: 13px; line-height: 18px; }
+.mvw-utility .mvw-container { display: flex; justify-content: space-between; align-items: center; height: 40px; }
+.mvw-utility-right { display: flex; gap: var(--space-6); align-items: center; }
+.mvw-utility a { color: var(--on-inverse); text-decoration: none; font-weight: 600; }
+.mvw-utility a:hover { text-decoration: underline; }
+.mvw-header { background: var(--surface-000); border-bottom: 1px solid var(--line-200); position: sticky; top: 0; z-index: 10; }
+.mvw-header .mvw-container { display: flex; align-items: center; justify-content: space-between; height: 96px; gap: var(--space-8); }
+.mvw-nav { display: flex; gap: var(--space-8); }
+.mvw-nav a { font-size: 15px; line-height: 20px; font-weight: 600; color: var(--ink-700); text-decoration: none; padding: var(--space-2) 0; border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease; }
+.mvw-nav a:hover, .mvw-nav a[aria-current] { color: var(--heading); border-bottom-color: var(--brand-steel); }
+.mvw-nav a:focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 3px; }
+
+/* Hero */
+.mvw-hero { position: relative; overflow: hidden; background: var(--brand-navy); }
+/* Slow drifting blueprint grid on navy, faded out toward the edges. */
+.mvw-hero::before { content: ""; position: absolute; inset: -48px; pointer-events: none;
+  background-image: linear-gradient(to right, rgba(147, 197, 253, .11) 1px, transparent 1px), linear-gradient(rgba(147, 197, 253, .11) 1px, transparent 1px);
+  background-size: 48px 48px; animation: mvw-grid-drift 30s linear infinite;
+  -webkit-mask-image: radial-gradient(ellipse 80% 90% at 65% 40%, #000 25%, transparent 80%); mask-image: radial-gradient(ellipse 80% 90% at 65% 40%, #000 25%, transparent 80%); }
+@keyframes mvw-grid-drift { to { transform: translate3d(48px, 48px, 0); } }
+.mvw-hero .mvw-container { position: relative; display: grid; grid-template-columns: 1.25fr .75fr; gap: var(--space-16); align-items: center; padding-top: var(--space-24); padding-bottom: var(--space-16); }
+.mvw-hero h1 { font-family: var(--font-display); font-size: 54px; line-height: 60px; font-weight: 800; letter-spacing: -1.3px; color: var(--on-inverse); margin: var(--space-4) 0 var(--space-6); max-width: 680px; }
+.mvw-hero-lead { font-size: 19px; line-height: 30px; margin: 0 0 var(--space-8); max-width: 600px; color: var(--on-inverse-muted); }
+.mvw-hero-actions { display: flex; gap: var(--space-4); flex-wrap: wrap; }
+.mvw-hero-card { background: var(--surface-000); border: 1px solid var(--line-200); border-top: 4px solid var(--brand-steel); border-radius: var(--radius-lg); padding: var(--space-8); box-shadow: var(--shadow-lg); }
+.mvw-hero-card h2 { font-family: var(--font-display); font-size: 18px; line-height: 24px; font-weight: 700; color: var(--heading); margin: 0 0 var(--space-4); }
+.mvw-hero-card ul { list-style: none; margin: 0; padding: 0; }
+.mvw-hero-card li { display: flex; align-items: center; gap: var(--space-3); font-size: 15px; line-height: 22px; color: var(--ink-900); padding: var(--space-3) 0; border-bottom: 1px solid var(--line-100); }
+.mvw-hero-card li svg { color: var(--brand-steel); flex: none; }
+.mvw-hero-card-foot { margin-top: var(--space-4); font-size: 13px; line-height: 20px; color: var(--ink-500); }
+.mvw-hero-stats { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--brand-steel); }
+.mvw-hero-stats > div { padding: var(--space-6) var(--space-6) 0 0; }
+.mvw-hero-stats > div + div { padding-left: var(--space-8); border-left: 1px solid var(--brand-steel); }
+.mvw-stat-value { font-family: var(--font-display); font-size: 32px; line-height: 38px; font-weight: 800; color: var(--on-inverse); letter-spacing: -0.6px; }
+.mvw-stat-label { font-size: 14px; line-height: 20px; color: var(--on-inverse-subtle); margin-top: var(--space-1); }
+
+/* Credentials strip */
+.mvw-creds { background: var(--brand-ink-deep); }
+.mvw-creds .mvw-container { display: flex; align-items: center; justify-content: space-between; gap: var(--space-6); padding-top: 18px; padding-bottom: 18px; flex-wrap: wrap; }
+.mvw-cred { display: flex; align-items: center; gap: var(--space-2); font-size: 14px; line-height: 20px; font-weight: 600; color: var(--on-inverse); }
+.mvw-cred svg { color: var(--on-inverse-accent); flex: none; }
+
+/* Audience panel */
+.mvw-panels { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-6); }
+.mvw-panel { border-radius: var(--radius-lg); padding: var(--space-12); border: 1px solid var(--line-200); background: var(--surface-000); display: flex; flex-direction: column; }
+.mvw-panel--tint { background: var(--surface-100); border-color: var(--surface-100); }
+.mvw-panel h3 { font-family: var(--font-display); font-size: 26px; line-height: 32px; font-weight: 700; letter-spacing: -0.4px; color: var(--heading); margin: var(--space-3) 0 var(--space-4); }
+.mvw-panel > p { font-size: 16px; line-height: 26px; margin: 0 0 var(--space-8); color: var(--ink-600); }
+.mvw-points { list-style: none; padding: 0; margin: 0 0 var(--space-8); display: grid; gap: var(--space-4); }
+.mvw-points li { display: grid; grid-template-columns: 18px 1fr; gap: var(--space-3); font-size: 15px; line-height: 23px; color: var(--ink-600); }
+.mvw-points li strong { color: var(--ink-900); font-weight: 600; }
+.mvw-points li svg { color: var(--brand-steel); margin-top: 3px; }
+.mvw-panel-cta { margin-top: auto; }
+
+/* Capability card */
+.mvw-cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-6); }
+.mvw-card { background: var(--surface-000); border: 1px solid var(--line-200); border-top: 3px solid var(--brand-steel); border-radius: var(--radius-lg); padding: var(--space-8) var(--space-6) var(--space-6); display: flex; flex-direction: column; box-shadow: var(--shadow-sm); transition: box-shadow .2s ease, border-color .2s ease; text-decoration: none; color: inherit; }
+.mvw-card:hover { box-shadow: var(--shadow-md); border-top-color: var(--brand-navy); }
+.mvw-card h3 { font-family: var(--font-display); font-size: 19px; line-height: 25px; font-weight: 700; color: var(--heading); margin: 0 0 var(--space-3); }
+.mvw-card p { font-size: 15px; line-height: 23px; color: var(--ink-600); margin: 0 0 var(--space-6); }
+.mvw-card-foot { margin-top: auto; padding-top: var(--space-4); border-top: 1px solid var(--line-100); display: flex; justify-content: space-between; gap: var(--space-2); font-size: 13px; line-height: 18px; }
+.mvw-card-foot span:first-child { font-weight: 600; color: var(--heading); }
+.mvw-card-cpv { color: var(--ink-500); }
+
+/* Process step */
+.mvw-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-8); counter-reset: s; }
+.mvw-step { position: relative; padding-top: var(--space-6); border-top: 2px solid var(--line-200); }
+.mvw-step::before { content: ""; position: absolute; top: -2px; left: 0; width: 48px; height: 2px; background: var(--brand-navy); }
+.mvw-step-num { display: inline-grid; place-items: center; width: 40px; height: 40px; border-radius: var(--radius-pill); background: var(--brand-navy); color: var(--on-inverse); font-family: var(--font-display); font-weight: 700; font-size: 16px; margin-bottom: var(--space-4); }
+.mvw-step h3 { font-family: var(--font-display); font-size: 19px; line-height: 25px; font-weight: 700; color: var(--heading); margin: 0 0 var(--space-3); }
+.mvw-step p { font-size: 15px; line-height: 23px; color: var(--ink-600); margin: 0; }
+
+/* Contact desk */
+.mvw-desk { display: grid; grid-template-columns: 1.1fr .9fr; gap: var(--space-6); }
+.mvw-desk-main { background: var(--brand-navy); border-radius: var(--radius-lg); padding: var(--space-12); color: var(--on-inverse-muted); display: flex; flex-direction: column; }
+.mvw-desk-main h3 { font-family: var(--font-display); font-size: 26px; line-height: 32px; font-weight: 700; color: var(--on-inverse); margin: 0 0 var(--space-3); }
+.mvw-desk-main p { font-size: 16px; line-height: 26px; margin: 0 0 var(--space-6); }
+.mvw-email { font-family: var(--font-display); font-size: 24px; line-height: 30px; font-weight: 700; color: var(--on-inverse); text-decoration: none; margin-bottom: var(--space-8); word-break: break-word; }
+.mvw-email:hover { text-decoration: underline; }
+.mvw-desk-actions { display: flex; gap: var(--space-3); margin-top: auto; flex-wrap: wrap; }
+.mvw-desk-side { display: grid; gap: var(--space-6); }
+.mvw-desk-item { border: 1px solid var(--line-200); background: var(--surface-000); border-radius: var(--radius-lg); padding: var(--space-8); }
+.mvw-desk-item h4 { font-family: var(--font-display); font-size: 18px; line-height: 24px; font-weight: 700; color: var(--heading); margin: 0 0 var(--space-2); }
+.mvw-desk-item p { font-size: 15px; line-height: 23px; color: var(--ink-600); margin: 0 0 var(--space-3); }
+.mvw-desk-meta { font-size: 14px; line-height: 20px; font-weight: 600; color: var(--accent-text); }
+
+/* Footer */
+.mvw-footer { background: var(--surface-050); border-top: 1px solid var(--line-200); color: var(--ink-600); font-size: 14px; line-height: 22px; }
+.mvw-footer-top { display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: var(--space-12); padding-top: var(--space-16); padding-bottom: var(--space-12); }
+.mvw-footer h5 { font-family: var(--font-display); font-size: 14px; line-height: 20px; color: var(--heading); font-weight: 700; margin: 0 0 var(--space-4); }
+.mvw-footer ul { list-style: none; padding: 0; margin: 0; display: grid; gap: var(--space-2); }
+.mvw-footer a { color: var(--ink-600); text-decoration: none; }
+.mvw-footer a:hover { color: var(--heading); text-decoration: underline; }
+.mvw-footer-blurb { margin: var(--space-4) 0 0; max-width: 320px; }
+.mvw-footer-bottom { border-top: 1px solid var(--line-200); }
+.mvw-footer-bottom .mvw-container { display: flex; justify-content: space-between; gap: var(--space-6); flex-wrap: wrap; padding-top: var(--space-6); padding-bottom: var(--space-6); font-size: 13px; line-height: 18px; color: var(--ink-500); }
+.mvw-legal { display: flex; gap: var(--space-6); flex-wrap: wrap; }
+.mvw-legal a { color: var(--ink-500); }
+
+/* Scroll reveal: only hides content once the script has switched it on. */
+.mvw-reveal-on .mvw-reveal { opacity: 0; transform: translateY(18px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .7, .2, 1); }
+.mvw-reveal-on .mvw-reveal.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .mvw-hero::before { animation: none; }
+  .mvw-reveal-on .mvw-reveal { opacity: 1; transform: none; transition: none; }
+}
+
+@media (max-width: 960px) {
+  .mvw-hero .mvw-container, .mvw-panels, .mvw-desk { grid-template-columns: 1fr; }
+  .mvw-cards, .mvw-steps { grid-template-columns: 1fr 1fr; }
+  .mvw-footer-top { grid-template-columns: 1fr 1fr; }
+  .mvw-nav { display: none; }
+}
+@media (max-width: 600px) {
+  .mvw-container { padding: 0 var(--space-4); }
+  .mvw-header .mvw-container { height: 76px; gap: var(--space-3); }
+  .mvw-header .mvw-logo svg { height: 46px; }
+  .mvw-header .mvw-btn--sm { padding: 8px 12px; font-size: 13px; }
+  .mvw-hero h1 { font-size: 38px; line-height: 44px; }
+  .mvw-hero-stats { grid-template-columns: 1fr; }
+  .mvw-hero-stats > div + div { padding-left: 0; border-left: 0; }
+  .mvw-cards, .mvw-steps, .mvw-footer-top { grid-template-columns: 1fr; }
+  .mvw-panel, .mvw-desk-main { padding: var(--space-8) var(--space-6); }
+  .mvw-utility-right span, .mvw-utility .mvw-container > span { display: none; }
+}
+
+:root,[data-theme="light"]{--brand-navy:#18243e;--brand-steel:#4e7496;--brand-ink-deep:#080d1a;--surface-000:#ffffff;--surface-050:#f8fafc;--surface-100:#f1f5f9;--surface-inverse:#18243e;--heading:#18243e;--ink-900:#0f172a;--ink-700:#334155;--ink-600:#475569;--ink-500:#64748b;--accent-text:#4e7496;--on-inverse:#ffffff;--on-inverse-muted:#cbd5e1;--on-inverse-subtle:#94a3b8;--on-inverse-accent:#93c5fd;--line-200:#e2e8f0;--line-100:#f1f5f9;--line-inverse:#1e293b;--control-border:#94a3b8;--focus-ring:#4e7496;}
+[data-theme="dark-disabled"]{--brand-navy:#18243e;--brand-steel:#4e7496;--brand-ink-deep:#080d1a;--surface-000:#0b1324;--surface-050:#0f1a30;--surface-100:#16213a;--surface-inverse:#080d1a;--heading:#eef2f8;--ink-900:#f1f5f9;--ink-700:#cbd5e1;--ink-600:#a3b1c6;--ink-500:#8a9ab2;--accent-text:#8fb3d4;--on-inverse:#ffffff;--on-inverse-muted:#cbd5e1;--on-inverse-subtle:#94a3b8;--on-inverse-accent:#93c5fd;--line-200:#22304d;--line-100:#1a2640;--line-inverse:#1e293b;--control-border:#5b6b85;--focus-ring:#93c5fd;}
+:root{--space-1:4px;--space-2:8px;--space-3:12px;--space-4:16px;--space-6:24px;--space-8:32px;--space-12:48px;--space-16:64px;--space-24:96px;--container-max:1200px;--radius-sm:4px;--radius-md:8px;--radius-lg:12px;--radius-xl:16px;--radius-pill:9999px;--shadow-sm:0 1px 2px 0 rgba(15, 23, 42, 0.05);--shadow-md:0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -4px rgba(15, 23, 42, 0.1);--shadow-lg:0 25px 50px -12px rgba(8, 13, 26, 0.25);--font-display:"Plus Jakarta Sans", system-ui, sans-serif;--font-body:Inter, system-ui, sans-serif;}
+
+body{margin:0} .pv{padding:24px} .row{display:flex;gap:16px;flex-wrap:wrap;align-items:center} .navy{background:var(--brand-navy);padding:24px;border-radius:12px}</style>
+<script src="https://cdn.jsdelivr.net/npm/react@18.3.1/umd/react.production.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script>/* @ds-bundle: {"format":4,"namespace":"MVW","components":[{"name":"Logo"},{"name":"Button"},{"name":"Eyebrow"},{"name":"Tag"},{"name":"SectionHeader"},{"name":"SiteHeader"},{"name":"Hero"},{"name":"CredentialsStrip"},{"name":"AudiencePanel"},{"name":"CapabilityCard"},{"name":"ProcessStep"},{"name":"ContactDesk"},{"name":"SiteFooter"}]} */
+(function () {
+  var React = window.React, h = React.createElement, F = React.Fragment;
+  function cx() { return Array.prototype.filter.call(arguments, Boolean).join(" "); }
+
+  // The supplied logo, drawn from the exact polygons used on mvw-partners.co.uk.
+  // variant "reverse" (navy grounds only) turns the navy ribbons and PARTNERS white; steel never changes.
+  var POLYS = [
+    ["10,130 34,130 74,10 50,10", 0], ["72,76 96,76 118,10 94,10", 0], ["134,130 158,130 198,10 174,10", 0],
+    ["50,10 74,10 96,76 72,76", 1], ["94,10 118,10 158,130 134,130", 1], ["174,10 198,10 238,130 214,130", 1],
+    ["214,130 238,130 260,64 236,64", 0], ["258,130 282,130 322,10 298,10", 0], ["236,64 260,64 282,130 258,130", 1]
+  ];
+  function Logo(p) {
+    p = p || {};
+    var full = p.mark !== true;
+    var ink = p.variant === "reverse" ? "#FFFFFF" : "#18243E";
+    return h("a", { href: p.href || "#", className: cx("mvw-logo", p.className), "aria-label": "MVW Partners home" },
+      h("svg", { viewBox: full ? "0 0 332 175" : "0 0 332 140", height: p.height || 48, role: "img", "aria-label": "MVW Partners" },
+        POLYS.map(function (q, i) { return h("polygon", { key: i, points: q[0], fill: q[1] ? "#4E7496" : ink }); }),
+        full ? h("text", { x: 166, y: 166, textAnchor: "middle", fill: ink, fontFamily: "'Plus Jakarta Sans', sans-serif", fontWeight: 700, fontSize: 21, letterSpacing: 10 }, "PARTNERS") : null));
+  }
+
+  function Arrow() { return h("span", { className: "mvw-btn-arrow", "aria-hidden": "true" }, "→"); }
+  function Button(p) {
+    var Tag = p.href ? "a" : "button";
+    return h(Tag, { href: p.href, onClick: p.onClick, type: p.href ? undefined : (p.type || "button"),
+      className: cx("mvw-btn", "mvw-btn--" + (p.variant || "primary"), p.size === "sm" && "mvw-btn--sm", p.className) },
+      p.children, p.arrow ? h(Arrow) : null);
+  }
+
+  function Eyebrow(p) { return h("span", { className: cx("mvw-eyebrow", p.tone === "inverse" && "mvw-eyebrow--inverse") }, p.children); }
+  function Tag(p) { return h("span", { className: cx("mvw-tag", p.tone === "inverse" && "mvw-tag--inverse") }, p.children); }
+
+  function SectionHeader(p) {
+    return h("header", { className: cx("mvw-sh", p.align === "center" && "mvw-sh--center", p.tone === "inverse" && "mvw-sh--inverse") },
+      p.eyebrow ? h(Eyebrow, { tone: p.tone }, p.eyebrow) : null,
+      h("h2", null, p.title), p.lead ? h("p", null, p.lead) : null);
+  }
+
+  var DEFAULT_LINKS = [["How We Work", "#model"], ["Capabilities", "#verticals"], ["Our Process", "#protocol"], ["Contact", "#desk"]];
+  function SiteHeader(p) {
+    p = p || {};
+    var links = p.links || DEFAULT_LINKS;
+    return h(F, null,
+      p.utility === false ? null : h("div", { className: "mvw-utility" }, h("div", { className: "mvw-container" },
+        h("span", null, "Principal supply partner to UK public sector bodies"),
+        h("div", { className: "mvw-utility-right" }, h("span", null, "Mon–Fri, 08:30–17:30"), h("a", { href: "mailto:contact@mvw-partners.co.uk" }, "contact@mvw-partners.co.uk")))),
+      h("header", { className: "mvw-header" }, h("div", { className: "mvw-container" },
+        h(Logo, { height: 64 }),
+        h("nav", { className: "mvw-nav", "aria-label": "Primary" }, links.map(function (l, i) {
+          return h("a", { key: i, href: l[1], "aria-current": p.current === i ? "page" : undefined }, l[0]); })),
+        h(Button, { href: "#desk", size: "sm" }, "Request a Quote"))));
+  }
+
+  function Check() {
+    return h("svg", { width: 18, height: 18, viewBox: "0 0 18 18", fill: "none", "aria-hidden": "true" },
+      h("circle", { cx: 9, cy: 9, r: 8.25, stroke: "currentColor", strokeWidth: 1.5 }),
+      h("path", { d: "M5.5 9.2l2.3 2.3 4.7-4.7", stroke: "currentColor", strokeWidth: 1.6, strokeLinecap: "round", strokeLinejoin: "round" }));
+  }
+
+  function Hero(p) {
+    p = p || {};
+    var stats = p.stats || [["100%", "Specification adherence"], ["30-day", "Standard payment terms"], ["UK-wide", "Direct-to-site delivery"]];
+    var sectors = p.sectors || ["Local authorities & councils", "NHS trusts & healthcare", "Universities & schools", "National parks & public estates", "Emergency services"];
+    return h("section", { className: "mvw-hero" }, h("div", { className: "mvw-container" },
+      h("div", { className: "mvw-hero-main" },
+        h(Eyebrow, { tone: "inverse" }, p.eyebrow || "Public sector procurement & supply"),
+        h("h1", null, p.title || "Precision fulfilment for public and commercial contracts."),
+        h("p", { className: "mvw-hero-lead" }, p.lead || "MVW Partners is a principal supply partner across the United Kingdom. We connect contracting authorities with trusted manufacturers, delivering specification-compliant goods with one point of accountability."),
+        h("div", { className: "mvw-hero-actions" },
+          h(Button, { variant: "inverse", href: "#desk", arrow: true }, "Request a quote"),
+          h(Button, { variant: "ghost-inverse", href: "#model" }, "How we work"))),
+      p.aside === false ? null : h("aside", { className: "mvw-hero-card" },
+        h("h2", null, "Who we work with"),
+        h("ul", null, sectors.map(function (s, i) { return h("li", { key: i }, h(Check), s); })),
+        h("div", { className: "mvw-hero-card-foot" }, "Supplying below-threshold and framework contracts nationwide.")),
+      h("div", { className: "mvw-hero-stats" }, stats.map(function (s, i) {
+        return h("div", { key: i }, h("div", { className: "mvw-stat-value" }, s[0]), h("div", { className: "mvw-stat-label" }, s[1])); }))));
+  }
+
+  function CredentialsStrip(p) {
+    var items = (p && p.items) || ["Procurement Act 2023 aligned", "FSC & ISO certified supply", "UKCA rated equipment", "30-day public sector terms"];
+    return h("div", { className: "mvw-creds" }, h("div", { className: "mvw-container" },
+      items.map(function (t, i) { return h("span", { key: i, className: "mvw-cred" }, h(Check), t); })));
+  }
+
+  function AudiencePanel(p) {
+    var tint = p.tone === "tint";
+    return h("article", { className: cx("mvw-panel", tint && "mvw-panel--tint") },
+      h(Eyebrow, null, p.eyebrow),
+      h("h3", null, p.title), h("p", null, p.body),
+      h("ul", { className: "mvw-points" }, (p.points || []).map(function (pt, i) {
+        return h("li", { key: i }, h(Check), h("span", null, h("strong", null, pt[0]), " ", pt[1])); })),
+      p.cta ? h("div", { className: "mvw-panel-cta" }, h(Button, { variant: "link", href: p.ctaHref || "#desk", arrow: true }, p.cta)) : null);
+  }
+
+  function CapabilityCard(p) {
+    return h("a", { className: "mvw-card", href: p.href || "#" },
+      h("h3", null, p.title), h("p", null, p.body),
+      h("div", { className: "mvw-card-foot" }, h("span", null, p.tag), h("span", { className: "mvw-card-cpv" }, p.cpv)));
+  }
+
+  function ProcessStep(p) {
+    var n = Number(p.stage) || 1;
+    return h("div", { className: "mvw-step" },
+      h("span", { className: "mvw-step-num" }, n),
+      h("h3", null, p.title), h("p", null, p.body));
+  }
+
+  function ContactDesk(p) {
+    p = p || {};
+    var email = p.email || "contact@mvw-partners.co.uk";
+    function Item(i) { return h("div", { className: "mvw-desk-item" }, h("h4", null, i.title), h("p", null, i.body), h("div", { className: "mvw-desk-meta" }, i.meta)); }
+    return h("div", { className: "mvw-desk" },
+      h("div", { className: "mvw-desk-main" },
+        h("h3", null, "Speak to our procurement team"),
+        h("p", null, "Send quotations, specification data sheets, warranty confirmations and tender invitations to our central procurement inbox."),
+        h("a", { className: "mvw-email", href: "mailto:" + email }, email),
+        h("div", { className: "mvw-desk-actions" },
+          h(Button, { variant: "inverse", href: "mailto:" + email, arrow: true }, "Email the team"),
+          h(Button, { variant: "ghost-inverse", onClick: function () { if (navigator.clipboard) navigator.clipboard.writeText(email); } }, "Copy email address"))),
+      h("div", { className: "mvw-desk-side" },
+        h(Item, { title: "Supplier quotations", body: "Please include the RFQ reference in your subject line, with itemised pricing, UK freight costs and product data sheets.", meta: "We aim to respond within 4 business hours." }),
+        h(Item, { title: "Office & coverage", body: "Based in Surrey, coordinating direct-to-site delivery across England, Wales and mainland UK.", meta: "Monday to Friday, 08:30–17:30" })));
+  }
+
+  function SiteFooter() {
+    function Col(c) { return h("div", null, h("h5", null, c.title), h("ul", null, c.links.map(function (l, i) { return h("li", { key: i }, h("a", { href: "#" }, l)); }))); }
+    return h("footer", { className: "mvw-footer" },
+      h("div", { className: "mvw-container mvw-footer-top" },
+        h("div", null, h(Logo, { height: 56 }),
+          h("p", { className: "mvw-footer-blurb" }, "Procurement and supply chain management for UK contracting authorities and trade manufacturers.")),
+        h(Col, { title: "Company", links: ["How we work", "Our process", "Compliance", "Contact"] }),
+        h(Col, { title: "Capabilities", links: ["Commercial furniture", "IT hardware & licensing", "Site & safety equipment", "Public estate goods"] }),
+        h(Col, { title: "Contact", links: ["contact@mvw-partners.co.uk", "Surrey, United Kingdom", "Mon–Fri, 08:30–17:30"] })),
+      h("div", { className: "mvw-footer-bottom" }, h("div", { className: "mvw-container" },
+        h("span", null, "© 2026 MVW Partners. All rights reserved."),
+        h("span", { className: "mvw-legal" }, ["Privacy policy", "Terms of business", "Accessibility", "Modern slavery statement"].map(function (l, i) { return h("a", { key: i, href: "#" }, l); })))));
+  }
+
+  // Fades page blocks up as they enter the viewport and back out as they leave, staggered within a row. Call after rendering.
+  var REVEAL = ".mvw-hero-main, .mvw-hero-card, .mvw-hero-stats > div, .mvw-sh, .mvw-panel, .mvw-card, .mvw-step, .mvw-desk > *, .mvw-footer-top > *";
+  function enableReveal(root) {
+    if (!("IntersectionObserver" in window)) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    var els = (root || document).querySelectorAll(REVEAL);
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { e.target.classList.toggle("is-in", e.isIntersecting && e.intersectionRatio >= 0.1); });
+    }, { threshold: [0, 0.1, 0.2], rootMargin: "0px 0px -40px 0px" });
+    Array.prototype.forEach.call(els, function (el) {
+      var i = Array.prototype.indexOf.call(el.parentNode.children, el);
+      el.classList.add("mvw-reveal");
+      el.style.transitionDelay = (i % 4) * 90 + "ms";
+      io.observe(el);
+    });
+    document.documentElement.classList.add("mvw-reveal-on");
+  }
+
+  window.MVW = { enableReveal: enableReveal, Logo: Logo, Button: Button, Eyebrow: Eyebrow, Tag: Tag, SectionHeader: SectionHeader, SiteHeader: SiteHeader,
+    Hero: Hero, CredentialsStrip: CredentialsStrip, AudiencePanel: AudiencePanel, CapabilityCard: CapabilityCard,
+    ProcessStep: ProcessStep, ContactDesk: ContactDesk, SiteFooter: SiteFooter };
+})();
+</script></head><body>
+<div id="root"></div>
+<script>
+  var M = window.MVW, h = React.createElement;
+  var cards = [
+  ['CPV 39100000','Commercial & Exterior Furniture','Heavy-duty furniture for public spaces, offices, hospitality and education, built for high-traffic use and year-round outdoor weather.','FSC certified, 15-year warranty'],
+  ['CPV 48000000','IT Hardware & Software Licensing','Computing hardware, networking equipment, audio-visual systems and authorised enterprise software licence renewals.','Authorised reseller supply'],
+  ['CPV 35110000','Industrial, Site & Safety Equipment','PPE, maintenance equipment, storage systems and commercial tools for local authorities and public estates.','UKCA and ISO rated'],
+  ['CPV 30000000','Public Estate & Operational Goods','Below-threshold supply for national parks, universities, healthcare trusts and emergency services.','Nationwide UK delivery']
+];
+  var steps = [
+  ['Specification review',"We review the buyer's technical requirements, material standards, finishes and warranty conditions."],
+  ['Supplier selection','We request structured quotations from vetted UK and European manufacturers and secure pricing and technical data.'],
+  ['Direct delivery',"On award, goods are dispatched directly from the manufacturer to the buyer's site anywhere in the UK."],
+  ['Sign-off & aftercare','We oversee delivery sign-off, 30-day invoicing and registration of manufacturer warranties.']
+];
+  ReactDOM.createRoot(document.getElementById("root")).render(h('div',{className:'mvw-root'},
+    h(M.SiteHeader,{current:-1}),
+    h(M.Hero),
+    h(M.CredentialsStrip),
+    h('section',{className:'mvw-section mvw-section--white',id:'model'}, h('div',{className:'mvw-container'},
+      h(M.SectionHeader,{eyebrow:'How we work',title:'A Single Point of Accountability',lead:'We act as the principal contractor between public sector buyers and manufacturers, managing compliance, tendering and invoicing while goods travel directly from factory to site.'}),
+      h('div',{className:'mvw-panels'}, h(M.AudiencePanel,{eyebrow:'For public sector buyers', title:'One accountable supplier for every contract',
+  body:'Contracting authorities appoint MVW Partners as their prime supplier. We take full responsibility for sourcing goods that meet your technical, environmental and durability requirements.',
+  points:[['Procurement Act 2023 aligned.','Compliant, efficient below-threshold contract delivery for public bodies.'],['Verified technical submissions.','Every bid is supported by manufacturer data sheets, certifications and warranties.'],['Simple administration.','One purchase order, one account manager and coordinated delivery to site.']],
+  cta:'Talk to our buyer team'}), h(M.AudiencePanel,{tone:'tint', eyebrow:'For manufacturers & wholesalers', title:'Public sector orders without the tender workload',
+  body:'Many manufacturers miss public sector opportunities because of the time tenders take. MVW Partners acts as your dedicated procurement channel.',
+  points:[['No bidding overhead.','We manage tender portals, compliance documentation and buyer communications.'],['Clear quotation requests.','Itemised specification schedules your sales team can price quickly.'],['Direct fulfilment.','On award, we place a purchase order with you for delivery straight to site.']],
+  cta:'Become a supply partner'})))),
+    h('section',{className:'mvw-section mvw-section--alt',id:'verticals'}, h('div',{className:'mvw-container'},
+      h(M.SectionHeader,{eyebrow:'Capabilities',title:'What We Supply',lead:'Off-the-shelf and made-to-specification goods across four core categories.'}),
+      h('div',{className:'mvw-cards'}, cards.map(function(c,i){return h(M.CapabilityCard,{key:i,cpv:c[0],title:c[1],body:c[2],tag:c[3]});})))),
+    h('section',{className:'mvw-section mvw-section--white',id:'protocol'}, h('div',{className:'mvw-container'},
+      h(M.SectionHeader,{eyebrow:'Our process',title:'From Specification to Sign-off',lead:'Every contract follows the same four-stage process, so buyers know exactly what happens and when.'}),
+      h('div',{className:'mvw-steps'}, steps.map(function(s,i){return h(M.ProcessStep,{key:i,stage:i+1,title:s[0],body:s[1]});})))),
+    h('section',{className:'mvw-section mvw-section--alt',id:'desk'}, h('div',{className:'mvw-container'},
+      h(M.SectionHeader,{eyebrow:'Contact',title:'Get in Touch',lead:'Whether you are a buyer inviting quotations or a manufacturer responding to one of our requests, our procurement team is here to help.'}),
+      h(M.ContactDesk))),
+    h(M.SiteFooter)));
+  setTimeout(function () { M.enableReveal(); }, 60);
+</script>
+</body></html>
+</body></html>
